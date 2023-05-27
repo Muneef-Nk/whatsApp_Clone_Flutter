@@ -1,9 +1,11 @@
 // import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:whatsapp/screens/select.dart';
 import 'package:whatsapp/screens/status.dart';
-
+import 'dart:io';
+import 'dart:async';
 import 'screens/call.dart';
 import 'screens/chat.dart';
 
@@ -20,7 +22,7 @@ class _HomePageState extends State<HomePage>
 
   @override
   void initState() {
-    _tabController = new TabController(length: 4, vsync: this, initialIndex: 1)
+    _tabController = TabController(length: 4, vsync: this, initialIndex: 1)
       ..addListener(() {
         setState(() {});
       });
@@ -39,7 +41,7 @@ class _HomePageState extends State<HomePage>
           ),
           bottom: TabBar(
             controller: _tabController,
-            tabs: [
+            tabs: const [
               Tab(icon: Icon(Icons.people)),
               Tab(
                 text: 'Chats',
@@ -54,8 +56,11 @@ class _HomePageState extends State<HomePage>
             indicatorWeight: 5,
             indicatorColor: Color(0xff25D366),
           ),
-          actions: [
-            Icon(Icons.camera_alt_outlined),
+          actions:  [
+            IconButton(onPressed: ()async{
+            ImagePicker image_picker = ImagePicker();
+            await image_picker.pickImage(source: ImageSource.camera);
+            }, icon: Icon(Icons.camera_alt)),
             SizedBox(
               width: 20,
             ),
@@ -146,7 +151,7 @@ class _HomePageState extends State<HomePage>
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => SelectContact()));
                             },
-                            child: Icon(
+                            child: const Icon(
                               Icons.edit,
                               color: Colors.blueGrey,
                             ),
