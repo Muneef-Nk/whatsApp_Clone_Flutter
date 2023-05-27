@@ -1,0 +1,28 @@
+class OnlineStatus {
+   static List<String> onlineStatus=[
+     'last seen today at 2:00 pm',
+     'online',
+     'last seen today at 2:00 pm',
+     'online',
+     'last seen today at 2:00 pm',
+     'online',
+     'last seen today at 2:00 pm',
+     'online',
+     'online',
+     'online',
+     'last seen today at 2:00 pm',
+     'online',
+     'last seen today at 2:00 pm',
+     'online',
+     'last seen today at 2:00 pm',
+     'online',
+     'online',
+     'online',
+     'last seen today at 2:00 pm',
+     'online',
+     'last seen today at 2:00 pm',
+     'online',
+     'last seen today at 2:00 pm',
+     'online',
+  ];
+}

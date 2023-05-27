@@ -8,6 +8,9 @@ class chatModel {
   final String pic;
 
   chatModel(this.name, this.msg, this.time, this.msgCount, this.pic);
+
+
+
 }
 
 List<chatModel> chatData = [
@@ -24,3 +27,5 @@ List<chatModel> chatData = [
   new chatModel('josna', 'whatsapp', '2:54 PM', ' 9', 'images/p11.jpeg'),
   new chatModel('gouri', 'whatsapp', '1:03 AM', ' 4', 'images/p12.jpeg'),
 ];
+
+
