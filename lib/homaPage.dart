@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:whatsapp/screens/community.dart';
 import 'package:whatsapp/screens/select.dart';
 import 'package:whatsapp/screens/status.dart';
 import 'dart:io';
@@ -31,6 +32,9 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
+    var sizedBox = SizedBox(
+              width: 20,
+            );
     return DefaultTabController(
       length: 3,
       child: Scaffold(
@@ -58,74 +62,33 @@ class _HomePageState extends State<HomePage>
           ),
           actions:  [
             IconButton(onPressed: ()async{
-            ImagePicker image_picker = ImagePicker();
+            ImagePicker  image_picker = ImagePicker();
             await image_picker.pickImage(source: ImageSource.camera);
             }, icon: Icon(Icons.camera_alt)),
-            SizedBox(
-              width: 20,
-            ),
+            sizedBox,
             Icon(Icons.search),
-            SizedBox(
-              width: 20,
-            ),
-            Icon(Icons.more_vert),
-            SizedBox(
-              width: 10,
-            ),
+            sizedBox,
+            PopupMenuButton(
+                itemBuilder: (context)=>[
+                  PopupMenuItem(child: Text('New group')),
+                  PopupMenuItem(child: Text('New broadcast')),
+                  PopupMenuItem(child: Text('Linked device')),
+                  PopupMenuItem(child: Text('Starred messages')),
+                  PopupMenuItem(child: Text('Payments')),
+                  PopupMenuItem(child: Text('Settings')),
+                ]),
           ],
         ),
         body: TabBarView(
-          controller: _tabController,
-          children: [
-            Column(
-              children: [
-                Image.asset(
-                  'images/comm.jpg',
-                  width: 500,
-                  height: 200,
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  'Introducing communities',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Container(
-                  // width: 250,
-                  // height: 100,
-                  child: Center(
-                    child: Text(
-                        '   easy organize your releted groups \n'
-                        ' and send announceements. Now your \n'
-                        ' communites like nerghbouhoods or\n'
-                        '   schools can have their own space',
-                        style: TextStyle(color: Colors.grey, fontSize: 17),
-                        ),
-                  ),
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                ElevatedButton(
-                    style: ButtonStyle(
-                      shape: MaterialStatePropertyAll(StadiumBorder()),
-                      backgroundColor:
-                          MaterialStatePropertyAll(Color(0xff075E54)),
-                      padding: MaterialStatePropertyAll(
-                          EdgeInsets.symmetric(horizontal: 80, vertical: 15)),
-                    ),
-                    onPressed: () {},
-                    child: Text('Start your community'))
-              ],
-            ),
-            Chat(),
-            Status(),
-            Calls(),
-          ],
+            controller: _tabController,
+            children: [
+              Community(),
+              Chat(),
+              Status(),
+              Calls(),
+            ]
+
+
         ),
         floatingActionButton: _tabController?.index == 0
             ? null

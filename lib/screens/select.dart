@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class SelectContact extends StatelessWidget {
   const SelectContact({Key? key}) : super(key: key);
@@ -21,13 +22,14 @@ class SelectContact extends StatelessWidget {
         ],
       ),
       body: Center(
-        child: Text(
-          'Commig soon',
-          style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 30,
-              color: Color(0xff128C7E)),
-        ),
+        child: Lottie.asset('assets/lottie/under_construction.json', width: 300)
+        // Text(
+        //   'Under construction',
+        //   style: TextStyle(
+        //       fontWeight: FontWeight.bold,
+        //       fontSize: 30,
+        //       color: Color(0xff128C7E)),
+        // ),
       ),
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:whatsapp/whats_data/online_status.dart';
+
 
 class ChatRoom extends StatelessWidget {
   final String pic;
