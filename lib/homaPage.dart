@@ -33,8 +33,8 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     var sizedBox = SizedBox(
-              width: 20,
-            );
+      width: 20,
+    );
     return DefaultTabController(
       length: 3,
       child: Scaffold(
@@ -60,36 +60,33 @@ class _HomePageState extends State<HomePage>
             indicatorWeight: 5,
             indicatorColor: Color(0xff25D366),
           ),
-          actions:  [
-            IconButton(onPressed: ()async{
-            ImagePicker  image_picker = ImagePicker();
-            await image_picker.pickImage(source: ImageSource.camera);
-            }, icon: Icon(Icons.camera_alt)),
+          actions: [
+            IconButton(
+                onPressed: () async {
+                  ImagePicker image_picker = ImagePicker();
+                  await image_picker.pickImage(source: ImageSource.camera);
+                },
+                icon: Icon(Icons.camera_alt)),
             sizedBox,
             Icon(Icons.search),
             sizedBox,
             PopupMenuButton(
-                itemBuilder: (context)=>[
-                  PopupMenuItem(child: Text('New group')),
-                  PopupMenuItem(child: Text('New broadcast')),
-                  PopupMenuItem(child: Text('Linked device')),
-                  PopupMenuItem(child: Text('Starred messages')),
-                  PopupMenuItem(child: Text('Payments')),
-                  PopupMenuItem(child: Text('Settings')),
-                ]),
+                itemBuilder: (context) => [
+                      PopupMenuItem(child: Text('New group')),
+                      PopupMenuItem(child: Text('New broadcast')),
+                      PopupMenuItem(child: Text('Linked device')),
+                      PopupMenuItem(child: Text('Starred messages')),
+                      PopupMenuItem(child: Text('Payments')),
+                      PopupMenuItem(child: Text('Settings')),
+                    ]),
           ],
         ),
-        body: TabBarView(
-            controller: _tabController,
-            children: [
-              Community(),
-              Chat(),
-              Status(),
-              Calls(),
-            ]
-
-
-        ),
+        body: TabBarView(controller: _tabController, children: [
+          Community(),
+          Chat(),
+          Status(),
+          Calls(),
+        ]),
         floatingActionButton: _tabController?.index == 0
             ? null
             : _tabController?.index == 1
